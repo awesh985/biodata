@@ -1,0 +1,47 @@
+<div class ="container -fluid">
+  <h1>BIO DATA FORM</h1>
+  <form #userForm="ngForm" (ngSubmit)="ngOnInit()"novalidate >
+    <div class="form-group" >
+      <label>FIRST NAME </label>
+      <input type="text" [(ngModel)]="userModel.userfirstname" name="userfirstname" class="form-control">
+    </div>
+    <div class="form-group">
+      <label> LAST NAME</label>
+      <input type="text" [(ngModel)]="userModel.userlastname" name="userlastname" class="form-control">
+    </div>
+    <div class="form-group">
+      <select class="custom-select" name="subject" [(ngModel)]="userModel.subject">
+        <option value="">choose the gender</option>
+        <option *ngFor="let subject of subjects">{{ subject }}</option>
+      </select>
+    </div>
+    <div class="form-check mb-3">
+      <input class="form-check-input" name="subscribe" [(ngModel)]="userModel.subscribe" type="checkbox">
+      <label class="form-check-label">all the data correct</label>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit form</button>
+
+  </form>
+</div>
+
+
+
+
+<div><table class="table table-striped table-bordered" >
+    <thead><tr>
+      <th><h1 class="text-danger">FIRSTNAME</h1></th>
+      <th><h1 class="text-danger">LASTNAME</h1></th>
+      <th><h1 class="text-danger">GENDER</h1></th>
+      <th><h1 class="text-danger">SUBSCRIBE</h1></th>
+    </tr></thead>
+   <tbody><tr *ngFor="let row of user; let j=index ">
+      <td>{{row.userfirstname}}</td>
+      <td>{{row.userlastname}}</td>
+      <td>{{row.subject}}</td>
+      <td>{{row.subscribe}}</td>
+      <td><button class="btn btn-primary text-white btn-danger" (click)="delete(row._id) ">delete</button></td>
+      <td><button class="btn btn-primary text-white btn-success"(click)="edit(row ,j)">edit</button></td>
+    </tr></tbody>
+  </table>
+  
+  </div>
